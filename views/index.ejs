@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flex justify-center pt-5">
+            <h1 class="bg-gradient-to-r from-violet-500 to-fuchsia-500 px-5 py-1 text-white rounded-full drop-shadow-md">CRUD</h1>
+    </div>
+  
+    <div class="flex justify-center">
+        <div class="p-10">
+            <h2 class="bg-gradient-to-r from-violet-500 to-fuchsia-500 px-5 py-1 text-white rounded-full drop-shadow-md">Add Data</h2>
+        </div>
+    </div>
+    <div class="flex justify-center">
+        <form action="/add" method="post" class="flex gap-2 items-center">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="occupation">Occupation:</label>
+            <input type="text" id="occupation" name="occupation" required>
+            <button type="submit" class="bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white px-5 py-1 rounded-full text-sm">Add User</button>
+        </form>
+    </div>
+
+    <div class="flex justify-center pt-5">
+        <h2 class="bg-gradient-to-r from-violet-500 to-fuchsia-500 px-5 py-1 text-white rounded-full drop-shadow-md">Data</h2>
+    </div>
+    <div class="flex justify-center p-10">
+        <ul>
+            <% users.forEach(user => { %>
+            <li class="flex gap-2">
+                <%= user.name %> - <%= user.occupation %>
+                <a href="/edit/<%= user.id %>" class="bg-gradient-to-r from-violet-500 to-fuchsia-500 px-5 py-1 text-sm text-white rounded-full drop-shadow-md">Edit</a>
+                <a href="/delete/<%= user.id %>" class="bg-gradient-to-r from-red-500 to-yellow-500 px-5 py-1 text-sm text-white rounded-full drop-shadow-md">Delete</a>
+            </li>
+            <% }) %>
+        </ul>
+    </div>
+    
+</body>
+</html>
